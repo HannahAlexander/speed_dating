@@ -119,6 +119,10 @@ def resample_data(train_df, multiplier, X_test, y_test, classifier):
 
     y_pred = classifier.predict(X_test)
 
+    predicted_data = X_test.copy()
+    predicted_data["y_pred"] = y_pred
+    predicted_data["y_actual"] = y_test
+
     scoring_func(y_test, y_pred)
 
-    return clf
+    return clf, predicted_data
